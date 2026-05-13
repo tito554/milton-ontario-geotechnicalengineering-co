@@ -25,12 +25,17 @@
 
 @media (max-width: 900px) {
     .sidebar { display: none; }
+    .content-area { flex-direction: column; }
+    .container { padding: 1rem; }
+    .header-top { flex-direction: column; text-align: center; }
+    main { padding: 1.5rem; }
+}
 .sidebar .cat-name:hover { color: #c9a961; }
 
 table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .9rem; }
 summary::before { content: '+ '; color: var(--primary); font-weight: 700; }
 * { margin:0; padding:0; box-sizing:border-box; }
-    .content-area { flex-direction: column; }
+    
 
 .normas { background: rgba(0,0,0,0.03); padding: 1rem 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary); margin: 1.5rem 0; font-size: .9rem; }
 .sidebar .cat-sub a {
@@ -40,7 +45,7 @@ summary::before { content: '+ '; color: var(--primary); font-weight: 700; }
 }
 details p { padding: .75rem 1.25rem; font-size: .9rem; color: #475569; margin: 0; }
 .cta .contacto-line a { color: white; text-decoration: underline; }
-    .header-top { flex-direction: column; text-align: center; }
+    
 .header-contact a:hover { color: white; }
 .cta .contacto-line { font-size: 1rem; margin: .5rem 0; }
 
@@ -59,7 +64,7 @@ main h2 { color: var(--dark); font-size: 1.35rem; margin: 2rem 0 1rem; padding-b
 th { background: var(--dark); color: white; font-weight: 600; font-family: var(--font-h); font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; }
 .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
 main p { margin-bottom: 1rem; color: #334155; }
-    .container { padding: 1rem; }
+    
 summary::-webkit-details-marker { display: none; }
 summary { padding: 1rem 1.25rem; cursor: pointer; font-weight: 500; color: var(--dark); background: #f8fafc; list-style: none; }
 .servicio p { margin: 0; font-size: .9rem; color: #475569; }
@@ -79,7 +84,7 @@ summary:hover { background: rgba(0,0,0,0.02); }
 
 #mapa-ciudad { height: 240px; max-width: 630px; margin: 1.5rem auto; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
 body { font-family: var(--font-b); color: var(--text); background: var(--bg); line-height: 1.75; font-size: 15px; }
-    main { padding: 1.5rem; }
+    
 .sidebar .cat-arrow { display: inline-block; transition: transform .2s; }
 .sidebar .cat-sub[hidden] { display: none; }
 th, td { padding: .85rem 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
@@ -132,8 +137,27 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
     width: 240px; background: var(--dark); color: white; flex-shrink: 0;
     border-radius: 10px; position: sticky; top: 1rem; overflow: hidden;
     max-height: calc(100vh - 2rem); overflow-y: auto;
-}</style>
-<link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#0A2540"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></head>
+}
+
+</style>
+<link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#0A2540"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><style id="minimal-fix-v5">
+/* Sticky para navbar específicos (NO header.hero) */
+.topbar, .navbar, .header-top, .main-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1010 !important;
+}
+header.hero, .hero { position: relative !important; }
+/* Dropdowns por encima del hero */
+.dd, .has-dd .dd, .nav-item .dd {
+  z-index: 1100 !important;
+}
+/* Leaflet contained */
+.leaflet-pane { z-index: 400 !important; }
+.leaflet-control { z-index: 800 !important; }
+.leaflet-container { z-index: 1 !important; }
+</style>
+</head>
 <body>
 
 <header>
@@ -155,7 +179,7 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
 <div class="container">
     <div class="content-area">
         <aside class="sidebar">
-            <nav><a href="index.html" class="home">Home</a><div class="cat-item" data-cat="investigation"><div class="cat-row"><a href="/investigation/" class="cat-name">Investigation</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Investigation"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cpt-test/">CPT (Cone Penetration Test)</a></div></div><div class="cat-item" data-cat="lab-in-situ"><div class="cat-row"><a href="/lab-in-situ/" class="cat-name">In-Situ Testing</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir In-Situ Testing"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/sand-cone-density/">Field density test (sand cone method)</a></div></div><div class="cat-item" data-cat="laboratory"><div class="cat-row"><a href="/laboratory/" class="cat-name">Laboratory</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Laboratory"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/atterberg-limits/">Atterberg limits</a><a href="/grain-size/">Grain size analysis (sieve + hydrometer)</a></div></div><div class="cat-item" data-cat="foundations"><div class="cat-row"><a href="/foundations/" class="cat-name">Foundations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Foundations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/piles/">Pile foundation design</a></div></div><div class="cat-item" data-cat="slopes"><div class="cat-row"><a href="/slopes/" class="cat-name">Slopes & Walls</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Slopes & Walls"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/anchors/">Active/passive anchor design</a><a href="/retaining-walls/">Retaining wall design</a><a href="/slope-stability/">Slope stability analysis</a></div></div><div class="cat-item" data-cat="ground-improvement"><div class="cat-row"><a href="/ground-improvement/" class="cat-name">Ground improvement</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Ground improvement"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/stone-columns/">Stone column design</a><a href="/vibrocompaction/">Vibrocompaction design</a></div></div><div class="cat-item" data-cat="seismic"><div class="cat-row"><a href="/seismic/" class="cat-name">Seismic</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Seismic"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/seismic-isolation/">Base isolation seismic design</a><a href="/seismic-microzonation/">Seismic microzonation</a><a href="/liquefaction/">Soil liquefaction analysis</a></div></div><div class="cat-item" data-cat="road-geotechnics"><div class="cat-row"><a href="/road-geotechnics/" class="cat-name">Roadway</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Roadway"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cbr-road/">CBR study for road design</a><a href="/flexible-pavement/">Flexible pavement design</a><a href="/rigid-pavement/">Rigid pavement design</a></div></div><div class="cat-item" data-cat="excavations"><div class="cat-row"><a href="/excavations/" class="cat-name">Underground Excavations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Underground Excavations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/soft-ground-tunnels/">Geotechnical analysis for soft soil tunnels</a><a href="/deep-excavations/">Geotechnical design of deep excavations</a><a href="/excavation-monitoring/">Geotechnical excavation monitoring</a></div></div></nav>
+            <nav><a href="index.html" class="home">Home</a><div class="cat-item" data-cat="investigation"><div class="cat-row"><a href="/investigation/" class="cat-name">Investigation</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Investigation"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cpt-test/">CPT (Cone Penetration Test)</a></div></div><div class="cat-item" data-cat="lab-in-situ"><div class="cat-row"><a href="/lab-in-situ/" class="cat-name">In-Situ</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir In-Situ"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/sand-cone-density/">Field density test (sand cone method)</a></div></div><div class="cat-item" data-cat="laboratory"><div class="cat-row"><a href="/laboratory/" class="cat-name">Laboratory</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Laboratory"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/atterberg-limits/">Atterberg limits</a><a href="/grain-size/">Grain size analysis (sieve + hydrometer)</a></div></div><div class="cat-item" data-cat="foundations"><div class="cat-row"><a href="/foundations/" class="cat-name">Foundations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Foundations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/piles/">Pile foundation design</a></div></div><div class="cat-item" data-cat="slopes"><div class="cat-row"><a href="/slopes/" class="cat-name">Slopes & Walls</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Slopes & Walls"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/anchors/">Active/passive anchor design</a><a href="/retaining-walls/">Retaining wall design</a><a href="/slope-stability/">Slope stability analysis</a></div></div><div class="cat-item" data-cat="ground-improvement"><div class="cat-row"><a href="/ground-improvement/" class="cat-name">Improvement</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Improvement"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/stone-columns/">Stone column design</a><a href="/vibrocompaction/">Vibrocompaction design</a></div></div><div class="cat-item" data-cat="seismic"><div class="cat-row"><a href="/seismic/" class="cat-name">Seismic</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Seismic"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/seismic-isolation/">Base isolation seismic design</a><a href="/seismic-microzonation/">Seismic microzonation</a><a href="/liquefaction/">Soil liquefaction analysis</a></div></div><div class="cat-item" data-cat="road-geotechnics"><div class="cat-row"><a href="/road-geotechnics/" class="cat-name">Roadway</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Roadway"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cbr-road/">CBR study for road design</a><a href="/flexible-pavement/">Flexible pavement design</a><a href="/rigid-pavement/">Rigid pavement design</a></div></div><div class="cat-item" data-cat="excavations"><div class="cat-row"><a href="/excavations/" class="cat-name">Excavations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Excavations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/soft-ground-tunnels/">Geotechnical analysis for soft soil tunnels</a><a href="/deep-excavations/">Geotechnical design of deep excavations</a><a href="/excavation-monitoring/">Geotechnical excavation monitoring</a></div></div></nav>
         </aside>
         <main>
             <section><p>Milton sits roughly 200 meters above sea level at the base of the Niagara Escarpment, where the overburden of Halton Till and occasional sand seams creates a specific seismic profile that cannot be read from a generic map. The National Building Code of Canada requires a site-specific soil liquefaction analysis for any structure assigned to Site Class D, E, or F, and in Milton that often means confronting the loose sand pockets trapped beneath the dense till. When the 2015 version of the NBCC tightened the seismic hazard values for Southern Ontario, it pushed more projects into the territory where simplified procedures like the NCEER method trigger a mandatory assessment. Our laboratory runs the supporting index tests—grain size distribution and Atterberg limits—while field data from <a data-interlink="1" href="/cpt-test/">CPT testing</a> or SPT borings feeds the cyclic resistance ratio calculations needed for a defensible report.</p></section>
@@ -177,7 +201,7 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
 
             <section>
                 <h2>Local geotechnical conditions in Milton Ontario</h2>
-                <p>A five-storey mixed-use building proposed near the Britannia Road corridor hit a saturated fine sand lens at 4.8 metres during preliminary drilling. The contractor assumed bedrock was shallow because of the Escarpment proximity, but the grain size curve from the split spoon samples plotted squarely inside the liquefiable envelope. Without a soil liquefaction analysis, the original shallow footing design would have carried a post-earthquake settlement risk exceeding 75 mm under the M6.8 design event. The NBCC 2015 spectrum for Milton, with a PGA around 0.12g on firm ground, amplifies once you cross into Site Class D or E material, and that amplification is what triggers the factor of safety below 1.0 in the Youd-Idriss procedure. The project was re-engineered with ground improvement after the analysis quantified the residual strength loss, and that sequence—drill, test, model, reinforce—has become standard for any medium-rise on the south side of the 401.</p>
+                <p>A five-storey mixed-use building proposed near the Britannia Road corridor hit a saturated fine sand lens at 4.8 metres during preliminary drilling. The contractor assumed bedrock was shallow because of the Escarpment proximity, but the grain size curve from the split spoon samples plotted squarely inside the liquefiable envelope. Without a soil liquefaction analysis, the original shallow footing design would have carried a post-earthquake settlement risk exceeding 75 mm under the M6.8 design event. The NBCC 2015 spectrum for Milton, with a PGA around 0.12g on firm ground, amplifies once you cross into Site Class D or E material, and that amplification is what triggers the factor of safety below 1.0 in the Youd-Idriss procedure. The project was re-engineered with Improvement after the analysis quantified the residual strength loss, and that sequence—drill, test, model, reinforce—has become standard for any medium-rise on the south side of the 401.</p>
             </section>
 
             
@@ -195,6 +219,8 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
 
             <section>
                 <h2>Our services</h2>
+<hr style="border:none;height:2px;background:linear-gradient(90deg,transparent,#A16207,transparent);margin:2rem 0;width:60%;margin-left:auto;margin-right:auto">
+
                 <p>A complete soil liquefaction analysis for a Milton site draws on field investigation, laboratory index testing, and numerical modeling tied to the NBCC spectrum. The three packages below cover the most common project triggers in the region.</p>
                 <style>.servicios-grid .servicio{flex:0 0 calc(50% - .5rem);min-width:260px;padding:1rem 1.2rem;border:1px solid #E5E7EB;border-radius:10px;background:#FFFFFF;position:relative;transition:border-color .18s,box-shadow .18s,transform .18s}.servicios-grid a.servicio-link:hover h3{color:#B45309}.servicios-grid{display:flex;flex-wrap:wrap;gap:1rem;justify-content:flex-start}.servicios-grid a.servicio-link:hover{border-color:#B45309;box-shadow:0 4px 14px rgba(0,0,0,.08);transform:translateY(-2px)}.servicios-grid a.servicio-link{display:block;text-decoration:none;color:inherit;cursor:pointer}.servicios-grid a.servicio-link:hover .servicio-arrow{transform:translateX(4px);opacity:1}.servicio-arrow{position:absolute;right:1rem;bottom:.8rem;color:#B45309;font-weight:700;opacity:.55;transition:transform .18s,opacity .18s}</style><div class="servicios-grid"><div class="servicio"><h3>SPT-Based Liquefaction Triggering</h3><p>Full NCEER procedure using SPT blow counts corrected for overburden, energy ratio, and fines content. Includes factor of safety per layer and LPI contouring for the building footprint.</p></div><div class="servicio"><h3>CPT-Based Continuous Profiling</h3><p>High-resolution cyclic resistance assessment using corrected cone tip resistance and sleeve friction ratio. Ideal for sites where thin sand seams need to be detected between till layers.</p></div><div class="servicio"><h3>Post-Liquefaction Settlement & Mitigation Screening</h3><p>Tokimatsu-Seed volumetric strain integration across all liquefied layers, plus a screening matrix for vibrocompaction, stone columns, or rigid inclusions if the settlement exceeds project tolerances.</p></div></div>
             </section>
@@ -210,7 +236,7 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
                 <div id="mapa-ciudad"></div>
                 <script src="/js/leaflet.js"></script>
                 <script>
-                    var map = L.map('mapa-ciudad').setView([43.5137,-79.8828], 12);
+var map = L.map('mapa-ciudad').setView([43.5137,-79.8828], 12);
                     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png',{attribution:'&copy; OSM &copy; CARTO',subdomains:'abcd',maxZoom:19}).addTo(map);
                     L.circle([43.5137,-79.8828],{radius:3000,color:'#B45309',fillColor:'#D97706',fillOpacity:0.18,weight:2}).addTo(map).bindPopup('Coverage area — Milton Ontario');
                 </script>

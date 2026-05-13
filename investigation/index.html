@@ -22,12 +22,17 @@
 
 @media (max-width: 900px) {
     .sidebar { display: none; }
+    .content-area { flex-direction: column; }
+    .container { padding: 1rem; }
+    .header-top { flex-direction: column; text-align: center; }
+    main { padding: 1.5rem; }
+}
 .sidebar .cat-name:hover { color: #c9a961; }
 
 table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .9rem; }
 summary::before { content: '+ '; color: var(--primary); font-weight: 700; }
 * { margin:0; padding:0; box-sizing:border-box; }
-    .content-area { flex-direction: column; }
+    
 
 .normas { background: rgba(0,0,0,0.03); padding: 1rem 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary); margin: 1.5rem 0; font-size: .9rem; }
 .sidebar .cat-sub a {
@@ -37,7 +42,7 @@ summary::before { content: '+ '; color: var(--primary); font-weight: 700; }
 }
 details p { padding: .75rem 1.25rem; font-size: .9rem; color: #475569; margin: 0; }
 .cta .contacto-line a { color: white; text-decoration: underline; }
-    .header-top { flex-direction: column; text-align: center; }
+    
 .header-contact a:hover { color: white; }
 .cta .contacto-line { font-size: 1rem; margin: .5rem 0; }
 
@@ -56,7 +61,7 @@ main h2 { color: var(--dark); font-size: 1.35rem; margin: 2rem 0 1rem; padding-b
 th { background: var(--dark); color: white; font-weight: 600; font-family: var(--font-h); font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; }
 .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
 main p { margin-bottom: 1rem; color: #334155; }
-    .container { padding: 1rem; }
+    
 summary::-webkit-details-marker { display: none; }
 summary { padding: 1rem 1.25rem; cursor: pointer; font-weight: 500; color: var(--dark); background: #f8fafc; list-style: none; }
 .servicio p { margin: 0; font-size: .9rem; color: #475569; }
@@ -76,7 +81,7 @@ summary:hover { background: rgba(0,0,0,0.02); }
 
 #mapa-ciudad { height: 240px; max-width: 630px; margin: 1.5rem auto; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
 body { font-family: var(--font-b); color: var(--text); background: var(--bg); line-height: 1.75; font-size: 15px; }
-    main { padding: 1.5rem; }
+    
 .sidebar .cat-arrow { display: inline-block; transition: transform .2s; }
 .sidebar .cat-sub[hidden] { display: none; }
 th, td { padding: .85rem 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
@@ -129,8 +134,27 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
     width: 240px; background: var(--dark); color: white; flex-shrink: 0;
     border-radius: 10px; position: sticky; top: 1rem; overflow: hidden;
     max-height: calc(100vh - 2rem); overflow-y: auto;
-}</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://milton-ontario.geotechnicalengineering.co/investigation/","url":"https://milton-ontario.geotechnicalengineering.co/investigation/","name":"Investigation in Milton Ontario – Canada","@type":"WebPage","description":"Geotechnical investigation in Milton, Ontario, addresses the complex subsurface conditions shaped by the Niagara Escarpment, glacial till deposits, and sha","isPartOf":{"@type":"WebSite","url":"https://milton-ontario.geotechnicalengineering.co","@id":"https://milton-ontario.geotechnicalengineering.co/#website"},"inLanguage":"en"},{"@type":"BreadcrumbList","itemListElement":[{"position":1,"name":"Home","@type":"ListItem","item":"https://milton-ontario.geotechnicalengineering.co/"},{"position":2,"name":"Investigation","@type":"ListItem","item":"https://milton-ontario.geotechnicalengineering.co/investigation/"}]},{"name":"Investigation","@type":"ItemList","itemListElement":[{"position":1,"name":"CPT (Cone Penetration Test)","@type":"ListItem","url":"https://milton-ontario.geotechnicalengineering.co/cpt-test/"}]}]}</script><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#0A2540"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></head>
+}
+
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://milton-ontario.geotechnicalengineering.co/investigation/","url":"https://milton-ontario.geotechnicalengineering.co/investigation/","name":"Investigation in Milton Ontario – Canada","@type":"WebPage","description":"Geotechnical investigation in Milton, Ontario, addresses the complex subsurface conditions shaped by the Niagara Escarpment, glacial till deposits, and sha","isPartOf":{"@type":"WebSite","url":"https://milton-ontario.geotechnicalengineering.co","@id":"https://milton-ontario.geotechnicalengineering.co/#website"},"inLanguage":"en"},{"@type":"BreadcrumbList","itemListElement":[{"position":1,"name":"Home","@type":"ListItem","item":"https://milton-ontario.geotechnicalengineering.co/"},{"position":2,"name":"Investigation","@type":"ListItem","item":"https://milton-ontario.geotechnicalengineering.co/investigation/"}]},{"name":"Investigation","@type":"ItemList","itemListElement":[{"position":1,"name":"CPT (Cone Penetration Test)","@type":"ListItem","url":"https://milton-ontario.geotechnicalengineering.co/cpt-test/"}]}]}</script><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#0A2540"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><style id="minimal-fix-v5">
+/* Sticky para navbar específicos (NO header.hero) */
+.topbar, .navbar, .header-top, .main-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1010 !important;
+}
+header.hero, .hero { position: relative !important; }
+/* Dropdowns por encima del hero */
+.dd, .has-dd .dd, .nav-item .dd {
+  z-index: 1100 !important;
+}
+/* Leaflet contained */
+.leaflet-pane { z-index: 400 !important; }
+.leaflet-control { z-index: 800 !important; }
+.leaflet-container { z-index: 1 !important; }
+</style>
+</head>
 <body>
 
 <header>
@@ -152,10 +176,10 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
 <div class="container">
     <div class="content-area">
         <aside class="sidebar">
-            <nav><a href="index.html" class="home">Home</a><div class="cat-item" data-cat="investigation"><div class="cat-row"><a href="/investigation/" class="cat-name">Investigation</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Investigation"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cpt-test/">CPT (Cone Penetration Test)</a></div></div><div class="cat-item" data-cat="lab-in-situ"><div class="cat-row"><a href="/lab-in-situ/" class="cat-name">In-Situ Testing</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir In-Situ Testing"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/sand-cone-density/">Field density test (sand cone method)</a></div></div><div class="cat-item" data-cat="laboratory"><div class="cat-row"><a href="/laboratory/" class="cat-name">Laboratory</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Laboratory"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/atterberg-limits/">Atterberg limits</a><a href="/grain-size/">Grain size analysis (sieve + hydrometer)</a></div></div><div class="cat-item" data-cat="foundations"><div class="cat-row"><a href="/foundations/" class="cat-name">Foundations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Foundations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/piles/">Pile foundation design</a></div></div><div class="cat-item" data-cat="slopes"><div class="cat-row"><a href="/slopes/" class="cat-name">Slopes & Walls</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Slopes & Walls"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/anchors/">Active/passive anchor design</a><a href="/retaining-walls/">Retaining wall design</a><a href="/slope-stability/">Slope stability analysis</a></div></div><div class="cat-item" data-cat="ground-improvement"><div class="cat-row"><a href="/ground-improvement/" class="cat-name">Ground improvement</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Ground improvement"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/stone-columns/">Stone column design</a><a href="/vibrocompaction/">Vibrocompaction design</a></div></div><div class="cat-item" data-cat="seismic"><div class="cat-row"><a href="/seismic/" class="cat-name">Seismic</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Seismic"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/seismic-isolation/">Base isolation seismic design</a><a href="/seismic-microzonation/">Seismic microzonation</a><a href="/liquefaction/">Soil liquefaction analysis</a></div></div><div class="cat-item" data-cat="road-geotechnics"><div class="cat-row"><a href="/road-geotechnics/" class="cat-name">Roadway</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Roadway"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cbr-road/">CBR study for road design</a><a href="/flexible-pavement/">Flexible pavement design</a><a href="/rigid-pavement/">Rigid pavement design</a></div></div><div class="cat-item" data-cat="excavations"><div class="cat-row"><a href="/excavations/" class="cat-name">Underground Excavations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Underground Excavations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/soft-ground-tunnels/">Geotechnical analysis for soft soil tunnels</a><a href="/deep-excavations/">Geotechnical design of deep excavations</a><a href="/excavation-monitoring/">Geotechnical excavation monitoring</a></div></div></nav>
+            <nav><a href="index.html" class="home">Home</a><div class="cat-item" data-cat="investigation"><div class="cat-row"><a href="/investigation/" class="cat-name">Investigation</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Investigation"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cpt-test/">CPT (Cone Penetration Test)</a></div></div><div class="cat-item" data-cat="lab-in-situ"><div class="cat-row"><a href="/lab-in-situ/" class="cat-name">In-Situ</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir In-Situ"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/sand-cone-density/">Field density test (sand cone method)</a></div></div><div class="cat-item" data-cat="laboratory"><div class="cat-row"><a href="/laboratory/" class="cat-name">Laboratory</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Laboratory"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/atterberg-limits/">Atterberg limits</a><a href="/grain-size/">Grain size analysis (sieve + hydrometer)</a></div></div><div class="cat-item" data-cat="foundations"><div class="cat-row"><a href="/foundations/" class="cat-name">Foundations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Foundations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/piles/">Pile foundation design</a></div></div><div class="cat-item" data-cat="slopes"><div class="cat-row"><a href="/slopes/" class="cat-name">Slopes & Walls</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Slopes & Walls"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/anchors/">Active/passive anchor design</a><a href="/retaining-walls/">Retaining wall design</a><a href="/slope-stability/">Slope stability analysis</a></div></div><div class="cat-item" data-cat="ground-improvement"><div class="cat-row"><a href="/ground-improvement/" class="cat-name">Improvement</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Improvement"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/stone-columns/">Stone column design</a><a href="/vibrocompaction/">Vibrocompaction design</a></div></div><div class="cat-item" data-cat="seismic"><div class="cat-row"><a href="/seismic/" class="cat-name">Seismic</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Seismic"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/seismic-isolation/">Base isolation seismic design</a><a href="/seismic-microzonation/">Seismic microzonation</a><a href="/liquefaction/">Soil liquefaction analysis</a></div></div><div class="cat-item" data-cat="road-geotechnics"><div class="cat-row"><a href="/road-geotechnics/" class="cat-name">Roadway</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Roadway"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cbr-road/">CBR study for road design</a><a href="/flexible-pavement/">Flexible pavement design</a><a href="/rigid-pavement/">Rigid pavement design</a></div></div><div class="cat-item" data-cat="excavations"><div class="cat-row"><a href="/excavations/" class="cat-name">Excavations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Excavations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/soft-ground-tunnels/">Geotechnical analysis for soft soil tunnels</a><a href="/deep-excavations/">Geotechnical design of deep excavations</a><a href="/excavation-monitoring/">Geotechnical excavation monitoring</a></div></div></nav>
         </aside>
         <main>
-            <section><p>Geotechnical investigation in Milton, Ontario, addresses the complex subsurface conditions shaped by the Niagara Escarpment, glacial till deposits, and shale bedrock of the Queenston Formation. These programs are governed by the Ontario Building Code and must follow Canadian Foundation Engineering Manual guidelines to assess bearing capacity, settlement, and groundwater. Fieldwork often includes advanced in-situ testing such as the <a href="cpt-test">CPT (Cone Penetration Test)</a>, which provides continuous soil profiling and pore pressure data critical for foundation design in the variable Halton Till.</p>
+            <section><p>Geotechnical investigation in Milton, Ontario, addresses the complex subsurface conditions shaped by the Niagara Escarpment, glacial till deposits, and shale bedrock of the Queenston Formation. These programs are governed by the Ontario Building Code and must follow Canadian Foundation Engineering Manual guidelines to assess bearing capacity, settlement, and groundwater. Fieldwork often includes advanced In-Situ such as the <a href="cpt-test">CPT (Cone Penetration Test)</a>, which provides continuous soil profiling and pore pressure data critical for foundation design in the variable Halton Till.</p>
 <p>This category supports residential subdivisions, commercial developments, and infrastructure projects traversing the escarpment corridor. Integrating <a href="cpt-test">CPT</a> data with laboratory analysis refines geotechnical models for cost-effective shoring and footing recommendations. Proper investigation mitigates risks of differential settlement and slope instability, ensuring compliance with municipal conservation authority requirements across Milton's expanding urban boundary.</p></section>
 
             <blockquote style="border-left:4px solid #B45309;background:rgba(0,0,0,.03);padding:1rem 1.25rem;margin:1.5rem 0 1.5rem 1rem;font-style:italic;color:#333;font-size:1.05rem;line-height:1.55;border-radius:0 6px 6px 0">A 15 m anchor bonded in Halton Till requires a completely different load-transfer model than a 5 m socket in Lockport dolostone.</blockquote>
@@ -198,9 +222,34 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
             </section>
 
             
-<section class="block" style="padding:2rem 1.5rem"><div style="max-width:1200px;margin:0 auto"><h2 style="margin-bottom:1.5rem;font-weight:700">Available services</h2><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem"><a href="../cpt-test/" style="display:block;padding:1.2rem;border:1px solid #E5E7EB;border-radius:10px;text-decoration:none;color:inherit;background:#FFFFFF;transition:all .2s;box-shadow:0 1px 2px rgba(0,0,0,.04)" onmouseover="this.style.borderColor='#F43F5E';this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(0,0,0,.08)'" onmouseout="this.style.borderColor='#E5E7EB';this.style.transform='translateY(0)';this.style.boxShadow='0 1px 2px rgba(0,0,0,.04)'"><h3 style="margin:0 0 .4rem;font-size:1.1rem">CPT (Cone Penetration Test)</h3><span style="font-size:.85rem;color:#666">→ Ver detalle</span></a></div></div></section></main>
+<section class="block" style="padding:2rem 1.5rem"><div style="max-width:1200px;margin:0 auto">
+<img src="/img/ensayo-cpt-3.webp" alt="Investigation in Milton Ontario" loading="lazy" decoding="async" style="width:100%;max-height:220px;object-fit:cover;display:block;border-radius:6px;margin:1.5rem 0">
+<p>Geotechnical investigation in Milton, Ontario, is a critical first step in any construction or infrastructure project, designed to characterize subsurface conditions and mitigate risk. The town sits atop a complex geological framework, featuring the fractured shale and limestone of the Georgian Bay Formation, overburden of glacial till, and localized deposits of the Halton Till, often with perched groundwater. A thorough investigation addresses these variable conditions, assessing soil stratigraphy, bedrock depth, and potential for groundwater infiltration. Our process begins with a comprehensive desk study of local well records and surficial geology maps, moving directly into intrusive fieldwork. The data gathered is essential for informed design, directly feeding into analyses by our team for <a href="/foundations/">foundations</a> engineering and ensuring compliance with the Ontario Building Code (OBC).</p>
+<p>The methodology for site investigation in Milton adheres strictly to Canadian standards, primarily CSA A23.1/A23.2 for concrete and aggregate materials and ASTM International methods adopted across the province. Our field program typically combines direct sampling techniques with advanced in-situ measurements. We utilize <a href="/cpt-test/">CPT (Cone Penetration Test)</a> to provide a continuous profile of soil behavior, an ideal solution for the silty clays and sands prevalent in the region, allowing for precise identification of soil type and shear strength without the disturbance of traditional drilling. This is complemented by borehole drilling to recover samples for visual classification and laboratory testing. For granular materials, we frequently execute <a href="/sand-cone-density/">field density tests using the sand cone method</a> to verify compaction levels on engineered fill, ensuring subgrade performance meets project specifications under Ontario's rigorous construction standards.</p>
+<p>Typical projects in Milton, from low-rise residential subdivisions along the escarpment to commercial developments near the Highway 401 corridor, demand tailored investigative approaches. A standard assignment involves a detailed <a href="/grain-size/">grain size analysis (sieve and hydrometer)</a> to classify soils according to the Unified Soil Classification System, which is fundamental for predicting drainage characteristics and frost susceptibility—a key concern given local winter conditions. Concurrently, we conduct <a href="/atterberg-limits/">Atterberg limits</a> testing to define the plasticity of fine-grained soils, a critical parameter for assessing the shrink-swell potential of the region's clay-rich tills. These laboratory results, combined with our field data, directly inform safe bearing capacity calculations and earth retention design, ensuring long-term structural integrity for everything from single-family homes to multi-story buildings.</p>
+<img src="/img/ensayo-cbr-2.webp" alt="Investigation in Milton Ontario" loading="lazy" decoding="async" style="width:100%;max-height:220px;object-fit:cover;display:block;border-radius:6px;margin:1.5rem 0">
+
+<p>Our investigative process culminates in a clear, actionable geotechnical report that synthesizes all field observations, <a href="/lab-in-situ/">In-Situ</a> data, and laboratory analyses. This deliverable provides explicit recommendations for foundation type, site preparation, and seismic site classification per the National Building Code of Canada. By integrating direct investigation with our specialized <a href="/laboratory/">laboratory</a> services, we deliver a complete subsurface profile that eliminates guesswork. This rigorous, data-centric approach provides developers and civil engineers in Milton with the certainty needed to optimize designs, prevent costly delays, and ensure full regulatory approval, transforming subsurface uncertainty into a managed, predictable component of the construction process.</p></div></section></main>
     </div>
 </div>
+
+<section class="block map-block" style="padding:2rem 1.5rem;background:#f5f5f5">
+<div style="max-width:1200px;margin:0 auto">
+<h2 style="text-align:center;margin-bottom:.5rem;font-weight:700">Location and service area</h2>
+<p style="text-align:center;color:#555;margin-bottom:1.5rem">We serve projects in Coverage area — Milton Ontario and surroundings.</p>
+<div class="map-wrap"><div id="map_b3bbf7" style="height:380px;width:100%;border-radius:8px;overflow:hidden"></div></div>
+<script>
+(function(){
+  if (typeof L === 'undefined' || !L.Icon) return;
+  var m=L.map("map_b3bbf7",{zoomControl:true,attributionControl:true}).setView([43.5137,-79.8828],12);
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png",{
+    attribution:"&copy; OpenStreetMap contributors &copy; CARTO",maxZoom:19,subdomains:"abcd"
+  }).addTo(m);
+  L.marker([43.5137,-79.8828],{icon:L.icon({iconUrl:'/css/images/marker-icon.png',iconRetinaUrl:'/css/images/marker-icon-2x.png',shadowUrl:'/css/images/marker-shadow.png',iconSize:[25,41],iconAnchor:[12,41],popupAnchor:[1,-34],shadowSize:[41,41]})}).addTo(m).bindPopup("Coverage area — Milton Ontario");
+})();
+</script>
+</div>
+</section>
 
 <footer style="background:#1C1917;color:rgba(255,255,255,.85);padding:3rem 1.5rem 2rem"><div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem"><div><p style="margin:0;font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.6">Milton Ontario, Canada</p></div><div><h4 style="color:#FFF;font-size:.92rem;margin:0 0 .8rem">SERVICES</h4><a href="/" style="color:rgba(255,255,255,.75);text-decoration:none;display:block;padding:.25rem 0">Services</a></div><div><h4 style="color:#FFF;font-size:.92rem;margin:0 0 .8rem">CONNECT</h4><p style="margin:0;font-size:.9rem;line-height:1.8"><a href="mailto:contact@geotechnicalengineering.co" style="color:#FFF;text-decoration:none">contact@geotechnicalengineering.co</a></p></div></div><div style="max-width:1100px;margin:2rem auto 0;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.1);text-align:center;font-size:.8rem;color:rgba(255,255,255,.5)">© 2026 Geotechnicalengineering. All rights reserved.</div><div data-authority-refs class="authority-refs" style="text-align:center;font-size:.8rem;padding:.5rem 0;opacity:.6"><strong>References:</strong> <a href="https://www.csagroup.org/" rel="nofollow noopener" target="_blank">CSA Group Standards</a> · <a href="https://www.astm.org/products-services/standards-and-publications.html" rel="nofollow noopener" target="_blank">ASTM Standards</a> · <a href="https://www.iso.org/committee/49802.html" rel="nofollow noopener" target="_blank">ISO Geotechnical</a></div><div class="updated-info" data-updated="2026-03-04" style="text-align:center;font-size:.85rem;opacity:.7;padding:.5rem 0">Last updated: 2026-03-04</div></footer>
 

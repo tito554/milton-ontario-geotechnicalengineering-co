@@ -25,12 +25,17 @@
 
 @media (max-width: 900px) {
     .sidebar { display: none; }
+    .content-area { flex-direction: column; }
+    .container { padding: 1rem; }
+    .header-top { flex-direction: column; text-align: center; }
+    main { padding: 1.5rem; }
+}
 .sidebar .cat-name:hover { color: #c9a961; }
 
 table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .9rem; }
 summary::before { content: '+ '; color: var(--primary); font-weight: 700; }
 * { margin:0; padding:0; box-sizing:border-box; }
-    .content-area { flex-direction: column; }
+    
 
 .normas { background: rgba(0,0,0,0.03); padding: 1rem 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary); margin: 1.5rem 0; font-size: .9rem; }
 .sidebar .cat-sub a {
@@ -40,7 +45,7 @@ summary::before { content: '+ '; color: var(--primary); font-weight: 700; }
 }
 details p { padding: .75rem 1.25rem; font-size: .9rem; color: #475569; margin: 0; }
 .cta .contacto-line a { color: white; text-decoration: underline; }
-    .header-top { flex-direction: column; text-align: center; }
+    
 .header-contact a:hover { color: white; }
 .cta .contacto-line { font-size: 1rem; margin: .5rem 0; }
 
@@ -59,7 +64,7 @@ main h2 { color: var(--dark); font-size: 1.35rem; margin: 2rem 0 1rem; padding-b
 th { background: var(--dark); color: white; font-weight: 600; font-family: var(--font-h); font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; }
 .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
 main p { margin-bottom: 1rem; color: #334155; }
-    .container { padding: 1rem; }
+    
 summary::-webkit-details-marker { display: none; }
 summary { padding: 1rem 1.25rem; cursor: pointer; font-weight: 500; color: var(--dark); background: #f8fafc; list-style: none; }
 .servicio p { margin: 0; font-size: .9rem; color: #475569; }
@@ -79,7 +84,7 @@ summary:hover { background: rgba(0,0,0,0.02); }
 
 #mapa-ciudad { height: 240px; max-width: 630px; margin: 1.5rem auto; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
 body { font-family: var(--font-b); color: var(--text); background: var(--bg); line-height: 1.75; font-size: 15px; }
-    main { padding: 1.5rem; }
+    
 .sidebar .cat-arrow { display: inline-block; transition: transform .2s; }
 .sidebar .cat-sub[hidden] { display: none; }
 th, td { padding: .85rem 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
@@ -132,8 +137,27 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
     width: 240px; background: var(--dark); color: white; flex-shrink: 0;
     border-radius: 10px; position: sticky; top: 1rem; overflow: hidden;
     max-height: calc(100vh - 2rem); overflow-y: auto;
-}</style>
-<link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#0A2540"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></head>
+}
+
+</style>
+<link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#0A2540"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><style id="minimal-fix-v5">
+/* Sticky para navbar específicos (NO header.hero) */
+.topbar, .navbar, .header-top, .main-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1010 !important;
+}
+header.hero, .hero { position: relative !important; }
+/* Dropdowns por encima del hero */
+.dd, .has-dd .dd, .nav-item .dd {
+  z-index: 1100 !important;
+}
+/* Leaflet contained */
+.leaflet-pane { z-index: 400 !important; }
+.leaflet-control { z-index: 800 !important; }
+.leaflet-container { z-index: 1 !important; }
+</style>
+</head>
 <body>
 
 <header>
@@ -155,7 +179,7 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
 <div class="container">
     <div class="content-area">
         <aside class="sidebar">
-            <nav><a href="index.html" class="home">Home</a><div class="cat-item" data-cat="investigation"><div class="cat-row"><a href="/investigation/" class="cat-name">Investigation</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Investigation"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cpt-test/">CPT (Cone Penetration Test)</a></div></div><div class="cat-item" data-cat="lab-in-situ"><div class="cat-row"><a href="/lab-in-situ/" class="cat-name">In-Situ Testing</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir In-Situ Testing"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/sand-cone-density/">Field density test (sand cone method)</a></div></div><div class="cat-item" data-cat="laboratory"><div class="cat-row"><a href="/laboratory/" class="cat-name">Laboratory</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Laboratory"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/atterberg-limits/">Atterberg limits</a><a href="/grain-size/">Grain size analysis (sieve + hydrometer)</a></div></div><div class="cat-item" data-cat="foundations"><div class="cat-row"><a href="/foundations/" class="cat-name">Foundations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Foundations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/piles/">Pile foundation design</a></div></div><div class="cat-item" data-cat="slopes"><div class="cat-row"><a href="/slopes/" class="cat-name">Slopes & Walls</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Slopes & Walls"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/anchors/">Active/passive anchor design</a><a href="/retaining-walls/">Retaining wall design</a><a href="/slope-stability/">Slope stability analysis</a></div></div><div class="cat-item" data-cat="ground-improvement"><div class="cat-row"><a href="/ground-improvement/" class="cat-name">Ground improvement</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Ground improvement"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/stone-columns/">Stone column design</a><a href="/vibrocompaction/">Vibrocompaction design</a></div></div><div class="cat-item" data-cat="seismic"><div class="cat-row"><a href="/seismic/" class="cat-name">Seismic</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Seismic"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/seismic-isolation/">Base isolation seismic design</a><a href="/seismic-microzonation/">Seismic microzonation</a><a href="/liquefaction/">Soil liquefaction analysis</a></div></div><div class="cat-item" data-cat="road-geotechnics"><div class="cat-row"><a href="/road-geotechnics/" class="cat-name">Roadway</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Roadway"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cbr-road/">CBR study for road design</a><a href="/flexible-pavement/">Flexible pavement design</a><a href="/rigid-pavement/">Rigid pavement design</a></div></div><div class="cat-item" data-cat="excavations"><div class="cat-row"><a href="/excavations/" class="cat-name">Underground Excavations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Underground Excavations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/soft-ground-tunnels/">Geotechnical analysis for soft soil tunnels</a><a href="/deep-excavations/">Geotechnical design of deep excavations</a><a href="/excavation-monitoring/">Geotechnical excavation monitoring</a></div></div></nav>
+            <nav><a href="index.html" class="home">Home</a><div class="cat-item" data-cat="investigation"><div class="cat-row"><a href="/investigation/" class="cat-name">Investigation</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Investigation"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cpt-test/">CPT (Cone Penetration Test)</a></div></div><div class="cat-item" data-cat="lab-in-situ"><div class="cat-row"><a href="/lab-in-situ/" class="cat-name">In-Situ</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir In-Situ"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/sand-cone-density/">Field density test (sand cone method)</a></div></div><div class="cat-item" data-cat="laboratory"><div class="cat-row"><a href="/laboratory/" class="cat-name">Laboratory</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Laboratory"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/atterberg-limits/">Atterberg limits</a><a href="/grain-size/">Grain size analysis (sieve + hydrometer)</a></div></div><div class="cat-item" data-cat="foundations"><div class="cat-row"><a href="/foundations/" class="cat-name">Foundations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Foundations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/piles/">Pile foundation design</a></div></div><div class="cat-item" data-cat="slopes"><div class="cat-row"><a href="/slopes/" class="cat-name">Slopes & Walls</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Slopes & Walls"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/anchors/">Active/passive anchor design</a><a href="/retaining-walls/">Retaining wall design</a><a href="/slope-stability/">Slope stability analysis</a></div></div><div class="cat-item" data-cat="ground-improvement"><div class="cat-row"><a href="/ground-improvement/" class="cat-name">Improvement</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Improvement"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/stone-columns/">Stone column design</a><a href="/vibrocompaction/">Vibrocompaction design</a></div></div><div class="cat-item" data-cat="seismic"><div class="cat-row"><a href="/seismic/" class="cat-name">Seismic</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Seismic"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/seismic-isolation/">Base isolation seismic design</a><a href="/seismic-microzonation/">Seismic microzonation</a><a href="/liquefaction/">Soil liquefaction analysis</a></div></div><div class="cat-item" data-cat="road-geotechnics"><div class="cat-row"><a href="/road-geotechnics/" class="cat-name">Roadway</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Roadway"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cbr-road/">CBR study for road design</a><a href="/flexible-pavement/">Flexible pavement design</a><a href="/rigid-pavement/">Rigid pavement design</a></div></div><div class="cat-item" data-cat="excavations"><div class="cat-row"><a href="/excavations/" class="cat-name">Excavations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Excavations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/soft-ground-tunnels/">Geotechnical analysis for soft soil tunnels</a><a href="/deep-excavations/">Geotechnical design of deep excavations</a><a href="/excavation-monitoring/">Geotechnical excavation monitoring</a></div></div></nav>
         </aside>
         <main>
             <section><p>A nine-story condominium project near the Milton GO Station had to hold a 7-meter cut directly beside a 100-year-old brick building last fall. The contractor knew that the Halton Till here can look solid on the spade but relax unpredictably when dewatered. We set up twelve automated total station prisms along the neighboring facade, vibrating-wire piezometers in three boreholes, and a real-time inclinometer chain in the soldier pile wall. Within the first week, a 4-millimeter lateral shift triggered an alert that gave the shoring crew time to adjust tieback tension. That is the rhythm of <a data-interlink="1" href="/excavation-monitoring/">deep excavation monitoring</a> in Milton: not just collecting data, but reading the ground before it writes its own story. The town sits on a geologically young landscape, shaped by the retreat of the Laurentide Ice Sheet, which left behind a quilt of dense till, glaciolacustrine silts, and occasional sand lenses. These materials react differently to stress relief, and without continuous observation, a stable-looking cut can degrade in hours. Our team combines geodetic and geotechnical instruments into a single coherent picture, so the site superintendent sees movement, pore pressure, and vibration on one dashboard. When excavation reaches the shale bedrock of the Queenston Formation, the behavior changes again, and monitoring protocols must adapt. With the rapid growth along the 401 corridor, Milton's underground infrastructure is getting deeper, and the margin for error keeps shrinking.</p></section>
@@ -177,6 +201,8 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
 
             <section>
                 <h2>Local geotechnical conditions in Milton Ontario</h2>
+<hr style="border:none;height:2px;background:linear-gradient(90deg,transparent,#A16207,transparent);margin:2rem 0;width:60%;margin-left:auto;margin-right:auto">
+
                 <p>Milton's winter cycle introduces a monitoring challenge that warmer climates rarely face: freeze-thaw ratcheting of the excavation face. When a cut stays open from November through March, the exposed till absorbs water during daytime thaws and freezes at night, creating a softened zone that progressively deepens. We have measured inclinometer deflections that accelerate in February even when no new material has been removed. The second major risk ties directly to the Niagara Escarpment's influence on regional groundwater. A deep excavation west of Tremaine Road once drew down a confined sand lens that was hydraulically connected to a residential well cluster more than 400 meters away, triggering a complaint that halted work for two weeks. Continuous piezometer data made it possible to prove the correlation and design a recharge system. The lesson: in Milton, you monitor not just the hole, but the watershed. Vibration damage to heritage structures is a third concern, especially along Main Street where brick buildings from the 1850s have no seismic detailing. Even low-vibration methods like CFA piling for <a data-interlink="1" href="/retaining-walls/">retaining walls</a> require baseline crack surveys and continuous vibration monitoring to protect the owner and the contractor. Ignoring these three factors has halted projects here before, and the cost of restarting always exceeds the cost of instrumenting properly from day one.</p>
             </section>
 
@@ -201,6 +227,8 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
 
             <section>
                 <h2>Q&A</h2>
+<hr style="border:none;height:2px;background:linear-gradient(90deg,transparent,#A16207,transparent);margin:2rem 0;width:60%;margin-left:auto;margin-right:auto">
+
                 <details><summary>What is the typical cost for excavation monitoring on a mid-rise project in Milton?</summary><p>For a typical 4-to-6-story excavation in the Halton Till with two to three neighboring structures, monitoring programs generally range from CA$1,190 to CA$3,540 per month, depending on the instrument count, reporting frequency, and whether automated or manual readings are required. Longer-duration projects often see lower monthly rates because the mobilization cost is amortized.</p></details><details><summary>How do you set alert levels for a heritage building on Main Street?</summary><p>We start with a detailed condition survey documenting every existing crack. Alert levels are then set in three tiers: a notification threshold at 50% of the O. Reg. 524/98 vibration limit or half the calculated angular distortion for settlement, a response threshold at 75%, and a stop-work threshold at the regulatory limit. The building's specific construction type and current condition are factored into the numbers.</p></details><details><summary>Can you monitor an excavation during a Milton winter?</summary><p>Yes, and winter monitoring is actually one of our most requested services. Total station prisms operate reliably in cold weather, and vibrating-wire piezometers are unaffected by freeze-thaw cycles. Inclinometer casing is protected with insulated housings. The main adjustment is more frequent data checks because freeze-thaw ratcheting can produce small, cumulative movements that need early identification.</p></details><details><summary>How soon before excavation starts should monitoring begin?</summary><p>Baseline readings should be collected at least two to four weeks before any shoring or excavation begins. This window captures the natural seasonal movement of the ground and neighboring buildings, so that construction-related movement can be separated from background noise. For vibration-sensitive sites, baseline is critical to defend against pre-existing damage claims.</p></details><details><summary>What is the difference between manual and automated monitoring?</summary><p>Manual monitoring involves a surveyor visiting the site on a schedule, typically once or twice a week, and is suitable for lower-risk cuts or post-excavation phases. Automated monitoring uses robotic total stations and data loggers that collect readings every 30 to 60 minutes, sending real-time alerts when thresholds are crossed. For deep excavations beside occupied buildings or infrastructure, automated systems are the standard of care in Ontario.</p></details>
             </section>
 
@@ -210,7 +238,7 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
                 <div id="mapa-ciudad"></div>
                 <script src="/js/leaflet.js"></script>
                 <script>
-                    var map = L.map('mapa-ciudad').setView([43.5137,-79.8828], 12);
+var map = L.map('mapa-ciudad').setView([43.5137,-79.8828], 12);
                     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png',{attribution:'&copy; OSM &copy; CARTO',subdomains:'abcd',maxZoom:19}).addTo(map);
                     L.circle([43.5137,-79.8828],{radius:3000,color:'#B45309',fillColor:'#D97706',fillOpacity:0.18,weight:2}).addTo(map).bindPopup('Coverage area — Milton Ontario');
                 </script>

@@ -25,12 +25,17 @@
 
 @media (max-width: 900px) {
     .sidebar { display: none; }
+    .content-area { flex-direction: column; }
+    .container { padding: 1rem; }
+    .header-top { flex-direction: column; text-align: center; }
+    main { padding: 1.5rem; }
+}
 .sidebar .cat-name:hover { color: #c9a961; }
 
 table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .9rem; }
 summary::before { content: '+ '; color: var(--primary); font-weight: 700; }
 * { margin:0; padding:0; box-sizing:border-box; }
-    .content-area { flex-direction: column; }
+    
 
 .normas { background: rgba(0,0,0,0.03); padding: 1rem 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary); margin: 1.5rem 0; font-size: .9rem; }
 .sidebar .cat-sub a {
@@ -40,7 +45,7 @@ summary::before { content: '+ '; color: var(--primary); font-weight: 700; }
 }
 details p { padding: .75rem 1.25rem; font-size: .9rem; color: #475569; margin: 0; }
 .cta .contacto-line a { color: white; text-decoration: underline; }
-    .header-top { flex-direction: column; text-align: center; }
+    
 .header-contact a:hover { color: white; }
 .cta .contacto-line { font-size: 1rem; margin: .5rem 0; }
 
@@ -59,7 +64,7 @@ main h2 { color: var(--dark); font-size: 1.35rem; margin: 2rem 0 1rem; padding-b
 th { background: var(--dark); color: white; font-weight: 600; font-family: var(--font-h); font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; }
 .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
 main p { margin-bottom: 1rem; color: #334155; }
-    .container { padding: 1rem; }
+    
 summary::-webkit-details-marker { display: none; }
 summary { padding: 1rem 1.25rem; cursor: pointer; font-weight: 500; color: var(--dark); background: #f8fafc; list-style: none; }
 .servicio p { margin: 0; font-size: .9rem; color: #475569; }
@@ -79,7 +84,7 @@ summary:hover { background: rgba(0,0,0,0.02); }
 
 #mapa-ciudad { height: 240px; max-width: 630px; margin: 1.5rem auto; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
 body { font-family: var(--font-b); color: var(--text); background: var(--bg); line-height: 1.75; font-size: 15px; }
-    main { padding: 1.5rem; }
+    
 .sidebar .cat-arrow { display: inline-block; transition: transform .2s; }
 .sidebar .cat-sub[hidden] { display: none; }
 th, td { padding: .85rem 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
@@ -132,8 +137,27 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
     width: 240px; background: var(--dark); color: white; flex-shrink: 0;
     border-radius: 10px; position: sticky; top: 1rem; overflow: hidden;
     max-height: calc(100vh - 2rem); overflow-y: auto;
-}</style>
-<link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#0A2540"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></head>
+}
+
+</style>
+<link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#0A2540"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><style id="minimal-fix-v5">
+/* Sticky para navbar específicos (NO header.hero) */
+.topbar, .navbar, .header-top, .main-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1010 !important;
+}
+header.hero, .hero { position: relative !important; }
+/* Dropdowns por encima del hero */
+.dd, .has-dd .dd, .nav-item .dd {
+  z-index: 1100 !important;
+}
+/* Leaflet contained */
+.leaflet-pane { z-index: 400 !important; }
+.leaflet-control { z-index: 800 !important; }
+.leaflet-container { z-index: 1 !important; }
+</style>
+</head>
 <body>
 
 <header>
@@ -155,7 +179,7 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
 <div class="container">
     <div class="content-area">
         <aside class="sidebar">
-            <nav><a href="index.html" class="home">Home</a><div class="cat-item" data-cat="investigation"><div class="cat-row"><a href="/investigation/" class="cat-name">Investigation</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Investigation"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cpt-test/">CPT (Cone Penetration Test)</a></div></div><div class="cat-item" data-cat="lab-in-situ"><div class="cat-row"><a href="/lab-in-situ/" class="cat-name">In-Situ Testing</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir In-Situ Testing"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/sand-cone-density/">Field density test (sand cone method)</a></div></div><div class="cat-item" data-cat="laboratory"><div class="cat-row"><a href="/laboratory/" class="cat-name">Laboratory</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Laboratory"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/atterberg-limits/">Atterberg limits</a><a href="/grain-size/">Grain size analysis (sieve + hydrometer)</a></div></div><div class="cat-item" data-cat="foundations"><div class="cat-row"><a href="/foundations/" class="cat-name">Foundations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Foundations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/piles/">Pile foundation design</a></div></div><div class="cat-item" data-cat="slopes"><div class="cat-row"><a href="/slopes/" class="cat-name">Slopes & Walls</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Slopes & Walls"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/anchors/">Active/passive anchor design</a><a href="/retaining-walls/">Retaining wall design</a><a href="/slope-stability/">Slope stability analysis</a></div></div><div class="cat-item" data-cat="ground-improvement"><div class="cat-row"><a href="/ground-improvement/" class="cat-name">Ground improvement</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Ground improvement"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/stone-columns/">Stone column design</a><a href="/vibrocompaction/">Vibrocompaction design</a></div></div><div class="cat-item" data-cat="seismic"><div class="cat-row"><a href="/seismic/" class="cat-name">Seismic</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Seismic"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/seismic-isolation/">Base isolation seismic design</a><a href="/seismic-microzonation/">Seismic microzonation</a><a href="/liquefaction/">Soil liquefaction analysis</a></div></div><div class="cat-item" data-cat="road-geotechnics"><div class="cat-row"><a href="/road-geotechnics/" class="cat-name">Roadway</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Roadway"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cbr-road/">CBR study for road design</a><a href="/flexible-pavement/">Flexible pavement design</a><a href="/rigid-pavement/">Rigid pavement design</a></div></div><div class="cat-item" data-cat="excavations"><div class="cat-row"><a href="/excavations/" class="cat-name">Underground Excavations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Underground Excavations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/soft-ground-tunnels/">Geotechnical analysis for soft soil tunnels</a><a href="/deep-excavations/">Geotechnical design of deep excavations</a><a href="/excavation-monitoring/">Geotechnical excavation monitoring</a></div></div></nav>
+            <nav><a href="index.html" class="home">Home</a><div class="cat-item" data-cat="investigation"><div class="cat-row"><a href="/investigation/" class="cat-name">Investigation</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Investigation"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cpt-test/">CPT (Cone Penetration Test)</a></div></div><div class="cat-item" data-cat="lab-in-situ"><div class="cat-row"><a href="/lab-in-situ/" class="cat-name">In-Situ</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir In-Situ"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/sand-cone-density/">Field density test (sand cone method)</a></div></div><div class="cat-item" data-cat="laboratory"><div class="cat-row"><a href="/laboratory/" class="cat-name">Laboratory</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Laboratory"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/atterberg-limits/">Atterberg limits</a><a href="/grain-size/">Grain size analysis (sieve + hydrometer)</a></div></div><div class="cat-item" data-cat="foundations"><div class="cat-row"><a href="/foundations/" class="cat-name">Foundations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Foundations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/piles/">Pile foundation design</a></div></div><div class="cat-item" data-cat="slopes"><div class="cat-row"><a href="/slopes/" class="cat-name">Slopes & Walls</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Slopes & Walls"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/anchors/">Active/passive anchor design</a><a href="/retaining-walls/">Retaining wall design</a><a href="/slope-stability/">Slope stability analysis</a></div></div><div class="cat-item" data-cat="ground-improvement"><div class="cat-row"><a href="/ground-improvement/" class="cat-name">Improvement</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Improvement"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/stone-columns/">Stone column design</a><a href="/vibrocompaction/">Vibrocompaction design</a></div></div><div class="cat-item" data-cat="seismic"><div class="cat-row"><a href="/seismic/" class="cat-name">Seismic</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Seismic"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/seismic-isolation/">Base isolation seismic design</a><a href="/seismic-microzonation/">Seismic microzonation</a><a href="/liquefaction/">Soil liquefaction analysis</a></div></div><div class="cat-item" data-cat="road-geotechnics"><div class="cat-row"><a href="/road-geotechnics/" class="cat-name">Roadway</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Roadway"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/cbr-road/">CBR study for road design</a><a href="/flexible-pavement/">Flexible pavement design</a><a href="/rigid-pavement/">Rigid pavement design</a></div></div><div class="cat-item" data-cat="excavations"><div class="cat-row"><a href="/excavations/" class="cat-name">Excavations</a><button class="cat-toggle" aria-expanded="false" aria-label="Expandir Excavations"><span class="cat-arrow">▼</span></button></div><div class="cat-sub" hidden><a href="/soft-ground-tunnels/">Geotechnical analysis for soft soil tunnels</a><a href="/deep-excavations/">Geotechnical design of deep excavations</a><a href="/excavation-monitoring/">Geotechnical excavation monitoring</a></div></div></nav>
         </aside>
         <main>
             <section><p>Contractors working between Milton's older sections near Main Street and the newer developments in the Boyne survey know the soil story changes fast. One site might hit dense Halton Till at half a meter, while a job two concessions over runs into lean clay that needs careful moisture conditioning. The <a data-interlink="1" href="/sand-cone-density/">sand cone density</a> test becomes the yardstick for both, because no matter what the spec sheet says, Milton's ground doesn't read the manual. We run ASTM D1556 tests on structural fill, utility trench backfill, and subgrade preparation across town, and the difference between a passed lift and a failed one usually comes down to how well the compaction crew understood the local material before the first roller even fired up. In a town where the escarpment influence shows up in everything from drainage to frost depth, field density verification isn't just paperwork — it's your proof that the fill will behave when winter hits and the ground cycles through freeze-thaw a dozen times before March.</p></section>
@@ -177,6 +201,8 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
 
             <section>
                 <h2>Local geotechnical conditions in Milton Ontario</h2>
+<hr style="border:none;height:2px;background:linear-gradient(90deg,transparent,#A16207,transparent);margin:2rem 0;width:60%;margin-left:auto;margin-right:auto">
+
                 <p>Milton sits on the Halton Till plain, with pockets of glaciolacustrine silt and clay that can hold water like a sponge. When these fine-grained soils get placed as engineered fill, achieving specified compaction requires hitting the moisture sweet spot — too dry and the density won't come up, too wet and you're pumping the subgrade. The sand cone method gives a direct measurement of in-place density, unlike nuclear gauges that rely on correlations that can drift in high-organic or variable-mineralogy soils. On slopes near the Niagara Escarpment corridor, under-compacted fill is a genuine risk: a poorly compacted lift at the base of a retaining wall or embankment can trigger long-term settlement that no amount of surface patching will fix. The test hole itself tells a story — if the sand cone operator sees layering, mottled color, or stray organics in the excavated material, that's a cue to flag the lift before the next one covers it up.</p>
             </section>
 
@@ -201,6 +227,8 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
 
             <section>
                 <h2>Q&A</h2>
+<hr style="border:none;height:2px;background:linear-gradient(90deg,transparent,#A16207,transparent);margin:2rem 0;width:60%;margin-left:auto;margin-right:auto">
+
                 <details><summary>How much does a sand cone field density test cost in Milton?</summary><p>Field density testing using the sand cone method in Milton typically runs between CA$140 and CA$180 per test, depending on site access, required frequency, and whether laboratory Proctor correlation is already established. Volume pricing applies for ongoing QA/QC programs on larger subdivisions or infrastructure projects.</p></details><details><summary>When is the sand cone method preferred over a nuclear density gauge in Milton's soils?</summary><p>The sand cone is the referee method when nuclear gauge readings look suspicious — particularly in Milton's Halton Till, where variable mineralogy and occasional cobbles can skew gauge correlations. It's also the first choice for proof-rolling verification, for fill containing slag or recycled concrete, and for final acceptance testing where the consulting engineer requires a direct mass-volume measurement rather than an indirect radiation-based reading.</p></details><details><summary>How many sand cone tests do I need for a residential foundation backfill in Milton?</summary><p>Under OPSS 501 and typical Halton Region municipal requirements, structural fill under footings and floor slabs calls for one test per lift per 500 m², with a minimum of one test per lift for smaller footprints. For trench backfill around foundation walls, expect a test every 300 mm of lift depth along the wall perimeter. On a standard single-family lot in Milton, this usually translates to 4–8 sand cone tests from subgrade to final grade.</p></details><details><summary>What's the difference between standard and modified Proctor, and which one applies to my Milton project?</summary><p>Standard Proctor (ASTM D698) uses a 5.5 lb hammer dropped 12 inches, simulating moderate compaction effort — typical for landscaping fill and some trench backfill. Modified Proctor (ASTM D1557) uses a 10 lb hammer dropped 18 inches, matching the higher energy of modern vibratory rollers. Most structural fill specs in Milton reference modified Proctor at 95% or 98% relative compaction, but always check the project geotechnical report — the wrong reference standard turns a passing density into a failing one.</p></details>
             </section>
 
@@ -210,7 +238,7 @@ main { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1p
                 <div id="mapa-ciudad"></div>
                 <script src="/js/leaflet.js"></script>
                 <script>
-                    var map = L.map('mapa-ciudad').setView([43.5137,-79.8828], 12);
+var map = L.map('mapa-ciudad').setView([43.5137,-79.8828], 12);
                     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png',{attribution:'&copy; OSM &copy; CARTO',subdomains:'abcd',maxZoom:19}).addTo(map);
                     L.circle([43.5137,-79.8828],{radius:3000,color:'#B45309',fillColor:'#D97706',fillOpacity:0.18,weight:2}).addTo(map).bindPopup('Coverage area — Milton Ontario');
                 </script>
